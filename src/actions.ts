@@ -1,5 +1,7 @@
-module.exports = function (self) {
-	self.setActionDefinitions({
+import { ArubaOssInstance } from "./main"
+
+export function UpdateActions(instance: ArubaOssInstance) {
+	instance.setActionDefinitions({
 		sample_action: {
 			name: 'My First Action',
 			options: [

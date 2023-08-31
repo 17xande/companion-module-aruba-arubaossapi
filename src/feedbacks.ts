@@ -1,11 +1,12 @@
-const { combineRgb } = require('@companion-module/base')
+import { combineRgb } from '@companion-module/base'
+import { ArubaOssInstance } from './main'
 
-module.exports = async function (self) {
-	self.setFeedbackDefinitions({
+export async function UpdateFeedbacks(instance: ArubaOssInstance) {
+	instance.setFeedbackDefinitions({
 		ChannelState: {
 			name: 'Example Feedback',
 			type: 'boolean',
-			label: 'Channel State',
+			// label: 'Channel State',
 			defaultStyle: {
 				bgcolor: combineRgb(255, 0, 0),
 				color: combineRgb(0, 0, 0),
@@ -22,7 +23,7 @@ module.exports = async function (self) {
 			],
 			callback: (feedback) => {
 				console.log('Hello world!', feedback.options.num)
-				if (feedback.options.num > 5) {
+				if (feedback.options.num ?? 0 > 5) {
 					return true
 				} else {
 					return false
